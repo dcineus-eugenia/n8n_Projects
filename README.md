@@ -30,3 +30,12 @@ n8ncli init --url https://<instance>.app.n8n.cloud --access-token <token> \
 n8ncli pull "Cloud Billing FinOps Report"
 n8ncli push "Cloud Billing FinOps Report"
 ```
+
+## Skills
+
+Claude skills used to design and review this project, in `skills/` (source: [MyDevOpsSkills](https://github.com/dcineus-eugenia/MyDevOpsSkills)):
+
+- [devops-skill-interview](skills/devops-skill-interview/SKILL.md) — needs scoping → functional & technical spec
+- [doubt-driven-development](skills/doubt-driven-development/SKILL.md) — technical decisions with falsifiable failure hypotheses
+- [hostile-review](skills/hostile-review/SKILL.md) — adversarial review of code, architecture, config
+- [cyber-defense](skills/cyber-defense/SKILL.md) — threat model, GDPR/NIS2/DORA compliance, cyber risk matrix
