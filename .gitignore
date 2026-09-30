@@ -1,0 +1,15 @@
+*accessKeys*.csv
+*.csv
+.env
+.env.*
+
+# n8ncli ignored files
+workflows/config/sync-state.json
+workflows/config/unconfigured-credentials.json
+workflows/config/workflow-folders.json
+workflows/references/
+
+# Local n8ncli / agent tooling
+n8n/
+.agents/
+workflows/config/
