@@ -55,7 +55,7 @@ Answering:
 5. **Generation** — answer in the language of the question, from the passages only, naming the source file
 6. **Save Messages** (Postgres) → **Chat Response**
 
-The earlier AI Agent version (agent + vector store tool + Postgres Chat Memory) is still on the canvas, disconnected.
+The earlier AI Agent version (agent + Knowledge Base vector store tool + Postgres Chat Memory) is still on the canvas, disconnected.
 
 ### Setup
 
