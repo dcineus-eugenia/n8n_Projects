@@ -31,6 +31,47 @@ n8ncli pull "Cloud Billing FinOps Report"
 n8ncli push "Cloud Billing FinOps Report"
 ```
 
+## RAG n8n : The theory of poker
+
+`workflows/workflows/RAG n8n _ The theory of poker.workflow.ts`
+
+Retrieval-augmented chat over any PDF with a text layer (first built on *The Theory of Poker*, hence the name).
+
+Ingestion:
+
+1. **On form submission** — upload a PDF
+2. **Extract from File** — extract the text
+3. **Delete Previous Version** (Postgres) — remove passages already stored for the same file name
+4. **Split Text Into Segments** (Code) — cut the text into segments of about 16,000 characters
+5. **Loop Over Items** → **Supabase Vector Store** — split each segment into chunks (1,000 chars, 200 overlap), embed them with **Google Gemini Embeddings** and insert them into `documents` with `source` (file name) and `part` metadata
+6. **Wait** — pause between segments to stay under the Gemini rate limit
+
+Answering:
+
+1. **When chat message received** → **Inputs** → **Get Session Messages** (Postgres) — question, session and history
+2. **Routing** — Gemini rewrites the question as a standalone query with keywords and detects its language
+3. **Search** — top 10 passages from Supabase (pgvector)
+4. **Reranking** — Gemini keeps the 4 most useful passages
+5. **Generation** — answer in the language of the question, from the passages only, naming the source file
+6. **Save Messages** (Postgres) → **Chat Response**
+
+The earlier AI Agent version (agent + vector store tool + Postgres Chat Memory) is still on the canvas, disconnected.
+
+### Setup
+
+- Run `supabase/schema.sql` in the Supabase SQL editor (tables `documents` and `n8n_chat_histories`, function `match_documents`, RLS enabled).
+- Credentials required (configured in n8n, not stored here):
+  - `Google Gemini(PaLM) Api` — Google AI Studio API key
+  - `Supabase account` — project URL and `service_role` key
+  - `Postgres account` — Supabase database connection (session pooler)
+- Webhook IDs are removed from this file; n8n generates new ones on import.
+
+### Limits
+
+- Scanned PDFs without a text layer are not supported.
+- On the Gemini free tier, embeddings are limited to 1,000 requests per day per model (one request per chunk).
+- The upload form has no authentication: keep the workflow unpublished, or add authentication to the form before publishing.
+
 ## Skills
 
 Claude skills used to design and review this project, in `skills/` (source: [MyDevOpsSkills](https://github.com/dcineus-eugenia/MyDevOpsSkills)):
