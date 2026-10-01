@@ -1,4 +1,4 @@
--- Supabase schema for the n8n workflow "RAG n8n : The theory of poker" (Supabase Vector Store + Postgres chat history).
+-- Supabase schema for the n8n workflow "RAG n8n : pdf" (Supabase Vector Store + Postgres chat history).
 -- Dimension 3072 = default output size of gemini-embedding-001 and gemini-embedding-2.
 -- No ANN index: pgvector limits HNSW/IVFFlat to 2000 dimensions; an exact scan is fine for a few thousand rows.
 

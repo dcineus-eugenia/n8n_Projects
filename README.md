@@ -31,11 +31,11 @@ n8ncli pull "Cloud Billing FinOps Report"
 n8ncli push "Cloud Billing FinOps Report"
 ```
 
-## RAG n8n : The theory of poker
+## RAG n8n : pdf
 
-`workflows/workflows/RAG n8n _ The theory of poker.workflow.ts`
+`workflows/workflows/RAG n8n _ pdf.workflow.ts`
 
-Retrieval-augmented chat over any PDF with a text layer (first built on *The Theory of Poker*, hence the name).
+Retrieval-augmented chat over any PDF with a text layer.
 
 Ingestion:
 
@@ -55,7 +55,7 @@ Answering:
 5. **Generation** — answer in the language of the question, from the passages only, naming the source file
 6. **Save Messages** (Postgres) → **Chat Response**
 
-The earlier AI Agent version (agent + vector store tool + Postgres Chat Memory) is still on the canvas, disconnected.
+The earlier AI Agent version (agent + Knowledge Base vector store tool + Postgres Chat Memory) is still on the canvas, disconnected.
 
 ### Setup
 
