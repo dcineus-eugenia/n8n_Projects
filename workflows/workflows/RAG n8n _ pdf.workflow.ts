@@ -133,7 +133,7 @@ const aI_Agent = node({
   config: { name: 'AI Agent', parameters: { options: { systemMessage: 'Tu es un assistant expert du livre "The Theory of Poker" de David Sklansky.\nPour chaque question, utilise TOUJOURS l\'outil Poker Knowledge Base pour r√©cup√©rer les extraits pertinents, puis r√©ponds en fran√ßais en te basant uniquement sur ces extraits.\nSi les extraits ne contiennent pas la r√©ponse, dis clairement que tu ne sais pas plut√¥t que d\'inventer.\nQuand c\'est utile, cite bri√®vement le passage (en anglais) qui appuie ta r√©ponse.' } }, position: [1232, 1600], subnodes: { model: google_Gemini_Chat_Model, tools: [poker_Knowledge_Base], memory: postgres_Chat_Memory } }
 });
 
-const wf = workflow('fk2W6WklNay9iFUQ', 'RAG n8n : The theory of poker', { executionOrder: 'v1', binaryMode: 'separate', availableInMCP: true });
+const wf = workflow('fk2W6WklNay9iFUQ', 'RAG n8n : pdf', { executionOrder: 'v1', binaryMode: 'separate', availableInMCP: true });
 
 export default wf
   .add(on_form_submission)
