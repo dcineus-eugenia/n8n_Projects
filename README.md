@@ -31,11 +31,11 @@ n8ncli pull "Cloud Billing FinOps Report"
 n8ncli push "Cloud Billing FinOps Report"
 ```
 
-## RAG n8n : The theory of poker
+## RAG n8n : PDF
 
 `workflows/workflows/RAG n8n _ The theory of poker.workflow.ts`
 
-Retrieval-augmented chat over any PDF with a text layer (first built on *The Theory of Poker*, hence the name).
+Retrieval-augmented chat over any PDF with a text layer (first built on *The Theory of Poker*).
 
 Ingestion:
 
